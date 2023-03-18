@@ -1,3 +1,0 @@
-1º Entrar no diretorio correto
-2º Dar make (exemplo: make ex1  (sem .cpp))
-3º Correr o executavel (exemplo: ./ex1)

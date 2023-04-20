@@ -1,0 +1,3 @@
+[submodule "prog_proj1"]
+	path = prog_proj1
+	url = git@github.com:joaossousa12/prog_proj1.git

@@ -7,10 +7,7 @@ using namespace std;
 
 class Regular : public Account { // means that regular is inheriting from the account class
     public:
-        Regular(int number){
-            Account(number);
-            regular_balance_ = 0;
-        }
+        Regular(int number) : Account(number), regular_balance_(0) {}
         void increase_balance(float amount){
             regular_balance_ += amount;
         }
@@ -23,9 +20,7 @@ class Regular : public Account { // means that regular is inheriting from the ac
 
 class Deposits : public Account {
     public:
-        Deposits(int number){
-            Account(number);
-        }
+        Deposits(int number) : Account(number) { }
         void add_deposit(float amount){
             balances_.push_back(amount);
         }

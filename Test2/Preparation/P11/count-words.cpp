@@ -1,0 +1,63 @@
+#include <iostream>
+#include <map>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+void show_map(const map<string, size_t>& count) {
+  cout << "[ ";
+  for (const auto& e : count) {
+    cout << e.first << ":" << e.second << ' ';
+  }
+  cout << "]\n";
+}
+
+void count_words(const string& str, map<string, size_t>& count){
+    istringstream iss(str);
+    string word;
+    while(iss >> word){
+        for(auto &c : word) 
+            c = tolower(c);
+        int flag = 0;
+        for(auto &m: count){
+            if(m.first == word){
+                m.second++;
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 0){
+            count.insert({word, 1});
+        }
+    }
+}    
+
+int main(){
+    { string s = "If you want to buy  buy  if you don't want to buy  bye bye";
+    map<string, size_t> count; 
+    count_words(s, count);
+    show_map(count); }
+    //[ buy:3 bye:2 don't:1 if:2 to:2 want:2 you:2 ]
+    { string s = "You can fool some of the people all of the time and all of the people some of the time  but you cannot fool all of the people all of the time";
+    map<string, size_t> count; 
+    count_words(s, count);
+    show_map(count); }
+    //[ all:4 and:1 but:1 can:1 cannot:1 fool:2 of:6 people:3 some:2 the:6 time:3 you:2 ]
+    { string s = "A tutor who tooted the flute tried to tutor two young tooters to toot   Said the two to the tutor is it tougher to toot or to tutor two young tooters to toot";
+    map<string, size_t> count;
+    count_words(s, count);
+    show_map(count); }
+    //[ a:1 flute:1 is:1 it:1 or:1 said:1 the:3 to:6 toot:3 tooted:1 tooters:2 tougher:1 tried:1 tutor:4 two:3 who:1 young:2 ]
+    { string s = "You do not need to turn on a night light on a clear night like tonight because in a clear night there is always a light light and tonight is a clear night";
+    map<string, size_t> count;
+    count_words(s, count);
+    show_map(count); }
+    //[ a:5 always:1 and:1 because:1 clear:3 do:1 in:1 is:2 light:3 like:1 need:1 night:4 not:1 on:2 there:1 to:1 tonight:2 turn:1 you:1 ]
+    { string s = "If one doctor doctors another doctor  Does the doctor who doctors the doctor  Doctor the way the doctor he is doctoring doctor  Or does he doctor the doctor  The way the doctor who doctors doctor";
+    map<string, size_t> count;
+    count_words(s, count);
+    show_map(count); }
+    //[ another:1 doctor:11 doctoring:1 doctors:3 does:2 he:2 if:1 is:1 one:1 or:1 the:7 way:2 who:2 ]
+    return 0;
+}

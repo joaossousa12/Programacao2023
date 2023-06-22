@@ -1,4 +1,4 @@
-# Programacao2023
+# Feup C++ Programming Course
 
 | Tests  | Grade |
 | --- | --- |
